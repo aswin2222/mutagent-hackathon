@@ -1,3 +1,11 @@
+# deps & build
+node_modules/
+client/node_modules/
+server/node_modules/
+dist/
+dist-ssr/
+*.tgz
+
 # Logs
 logs
 *.log
@@ -7,16 +15,18 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-dist
-dist-ssr
-*.local
+# secrets & local env  (NEVER COMMIT)
 .env
+.env.*
+!.env.example
+*.local
 
-node_modules/
-client/node_modules/
-server/node_modules/
+# agent runtime output
+.baseline.json
+.listener-state.json
+.outbox.jsonl
 
-# Editor directories and files
+# Editor & OS
 .vscode/*
 !.vscode/extensions.json
 .idea
