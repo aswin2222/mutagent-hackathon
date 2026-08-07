@@ -1,0 +1,53 @@
+# Mutagent ADL (Agent Description Language) Spec
+# Agent: Meeting Shadow Agent with Live Clarity Layer
+# Platform: Mutagent.io (https://mutagent.io)
+
+version: "1.0.0"
+agent:
+  name: "Meeting Shadow Agent"
+  id: "meeting-shadow-agent"
+  description: "Real-time tab & microphone audio shadow agent featuring Live Clarity Layer (streaming transcript enhancement & instant 3-tier Q&A answer surfacing), Groq AI task filtering, and Firebase DB sync."
+  category: "productivity-assistant"
+  framework: "Node.js / Express / React VITE / Deepgram / Groq LLM"
+
+runtime:
+  environment: "chrome-extension-v3"
+  speech_recognition: "Deepgram Nova-2 (WebSocket) + Web Speech API"
+  llm_provider: "Groq (llama-3.3-70b-versatile)"
+  database: "Firebase Firestore"
+
+capabilities:
+  - id: "live-transcript-enhancement"
+    name: "Live Transcript Enhancement"
+    description: "Removes filler words (um, uh, like), fixes broken grammar, preserves speaker intent, technical terms, and numbers in rolling 5-10s windows."
+    latency_target_ms: 1500
+
+  - id: "instant-qna-surfacing"
+    name: "Instant Q&A & Answer Surfacing"
+    description: "Detects spoken and typed questions in real-time. Queries 3-tier memory pipeline (In-Meeting Memory -> Past Firebase Meetings -> Connected Docs) and surfaces direct answers with confidence badges and citations."
+    zero_hallucination: true
+
+  - id: "speaker-diarization"
+    name: "Multi-Speaker Attribution"
+    description: "Distinguishes Speaker 1 (other meeting participants via tab audio) and Speaker 2 (user via local microphone)."
+
+  - id: "groq-post-meeting-analysis"
+    name: "Groq AI Executive Summary & Action Items"
+    description: "Generates structured executive summary, key insights, action item assignments, and deadlines post-meeting."
+
+  - id: "firebase-db-sync"
+    name: "Firebase Firestore DB Storage"
+    description: "Persists raw transcripts, cleaned text, and Groq AI analysis into Firebase Cloud Firestore."
+
+evaluation:
+  metrics:
+    - name: "filler_word_removal_rate"
+      target: ">= 95%"
+    - name: "grammar_correction_score"
+      target: ">= 90%"
+    - name: "qna_retrieval_accuracy"
+      target: ">= 92%"
+    - name: "zero_hallucination_compliance"
+      target: "100%"
+    - name: "end_to_end_latency_ms"
+      target: "< 2000ms"

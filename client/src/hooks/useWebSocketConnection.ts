@@ -22,7 +22,11 @@ function useWebSocketConnection(
   );
 
   useEffect(() => {
-    if (lastMessage !== null) {
+    if (
+      lastMessage !== null &&
+      typeof lastMessage.data === "string" &&
+      lastMessage.data.trim().length > 0
+    ) {
       appendToMessageHistory(lastMessage);
 
       if (autoScroll && transcriptionAreaRef.current && transcriptRef.current) {

@@ -1,0 +1,30 @@
+{
+  "trace_id": "tr_qna_retrieval_99182",
+  "timestamp": "2026-08-07T19:48:35.000Z",
+  "component": "ClarityService.detectAndAnswerQuestion",
+  "search_pipeline": [
+    "Priority 1: In-Meeting Memory Buffer",
+    "Priority 2: Past Meetings Store (Firebase)",
+    "Priority 3: Connected Docs (Notion / Linear / Asana)"
+  ],
+  "entries": [
+    {
+      "question": "Who is the Prime Minister of India?",
+      "asked_by": "Speaker 1",
+      "source_type": "in_meeting",
+      "confidence": "answered",
+      "answer": "Narendra Modi is the Prime Minister of India.",
+      "citation": "Said by Speaker 1 at 07:29:43 pm",
+      "latency_ms": 822
+    },
+    {
+      "question": "What is the deadline for Eureka task?",
+      "asked_by": "Speaker 2",
+      "source_type": "connected_docs",
+      "confidence": "answered",
+      "answer": "The deadline for the Eureka task is the 30th.",
+      "citation": "From Notion - Project Hub: Q3 Project Roadmap & Deliverables",
+      "latency_ms": 527
+    }
+  ]
+}

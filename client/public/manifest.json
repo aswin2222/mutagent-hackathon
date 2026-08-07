@@ -2,7 +2,13 @@
   "manifest_version": 3,
   "name": "Interview AI",
   "version": "1.0",
-  "permissions": ["tabs", "tabCapture", "scripting", "background", "activeTab"],
+  "permissions": [
+    "tabs",
+    "tabCapture",
+    "scripting",
+    "background",
+    "activeTab"
+  ],
   "action": {
     "default_title": "Click Me",
     "default_popup": "index.html"
@@ -10,5 +16,7 @@
   "background": {
     "service_worker": "service-worker.js"
   },
-  "host_permissions": ["*://*/*"]
+  "host_permissions": [
+    "*://*/*"
+  ]
 }

@@ -1,0 +1,121 @@
+{
+  "timestamp": "2026-08-07T16:08:51.825Z",
+  "total_cases": 6,
+  "passed_cases": 6,
+  "failed_cases": 0,
+  "overall_score": "100.0%",
+  "latency_avg_ms": 491,
+  "results": [
+    {
+      "test_id": "tc_01",
+      "category": "live_enhancement",
+      "passed": true,
+      "latency_ms": 235,
+      "output": {
+        "success": true,
+        "enhancedLine": {
+          "id": "line_1786118929102_mput",
+          "speaker": "Speaker 1",
+          "rawText": "um like we need to finish the Eureka task by 30th you know",
+          "enhancedText": "We need to finish the Eureka task by the 30th.",
+          "timestamp": "09:38:49 pm"
+        },
+        "question": null
+      }
+    },
+    {
+      "test_id": "tc_02",
+      "category": "live_enhancement",
+      "passed": true,
+      "latency_ms": 265,
+      "output": {
+        "success": true,
+        "enhancedLine": {
+          "id": "line_1786118929376_a8kr",
+          "speaker": "Speaker 2",
+          "rawText": "uh so Ashwin and Jonathan are allocating 50 rupees budget for DBMS DBMS worksheets",
+          "enhancedText": "Ashwin and Jonathan are allocating a 50 rupees budget for DBMS worksheets.",
+          "timestamp": "09:38:49 pm"
+        },
+        "question": null
+      }
+    },
+    {
+      "test_id": "tc_03",
+      "category": "qna_retrieval",
+      "passed": true,
+      "latency_ms": 889,
+      "output": {
+        "success": true,
+        "question": {
+          "id": "q_1786118930265_d07l",
+          "question": "Who is the Prime Minister of India?",
+          "askedBy": "Speaker 1",
+          "isTyped": true,
+          "timestamp": "09:38:49 pm",
+          "answer": "Narendra Modi is the Prime Minister of India.",
+          "confidence": "answered",
+          "citation": "Said by Speaker 1 at 07:29:43 pm",
+          "sourceType": "in_meeting"
+        }
+      }
+    },
+    {
+      "test_id": "tc_04",
+      "category": "qna_retrieval",
+      "passed": true,
+      "latency_ms": 656,
+      "output": {
+        "success": true,
+        "question": {
+          "id": "q_1786118930921_qncf",
+          "question": "What is the deadline for Eureka task?",
+          "askedBy": "Speaker 2",
+          "isTyped": true,
+          "timestamp": "09:38:50 pm",
+          "answer": "The deadline for the Eureka task is the 30th.",
+          "confidence": "partially_answered",
+          "citation": "Said by Speaker 1 at 09:38:49 pm",
+          "sourceType": "in_meeting"
+        }
+      }
+    },
+    {
+      "test_id": "tc_05",
+      "category": "zero_hallucination",
+      "passed": true,
+      "latency_ms": 750,
+      "output": {
+        "success": true,
+        "question": {
+          "id": "q_1786118931671_bsxy",
+          "question": "What is the exact secret password for the server database cluster?",
+          "askedBy": "Speaker 1",
+          "isTyped": true,
+          "timestamp": "09:38:50 pm",
+          "answer": "The password is not available in the current context or past meeting notes. Contact Jonathan from CSCP or the system administrator for the correct password.",
+          "confidence": "partially_answered",
+          "citation": "From past meeting: Google Meet Notes - 6:32:24 PM",
+          "sourceType": "past_meeting"
+        }
+      }
+    },
+    {
+      "test_id": "tc_06",
+      "category": "speaker_diarization",
+      "passed": true,
+      "latency_ms": 151,
+      "output": {
+        "success": true,
+        "enhancedLine": {
+          "id": "line_1786118931822_d42g",
+          "speaker": "Speaker 1",
+          "rawText": "Are you attending the conference tomorrow? Speaker 2: Yes I will be presenting at 10 AM.",
+          "enhancedText": "Speaker 1: Are you attending the conference tomorrow? Speaker 2: Yes, I will be presenting at 10 AM.",
+          "timestamp": "09:38:51 pm"
+        },
+        "question": null
+      }
+    }
+  ]
+}

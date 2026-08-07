@@ -4,7 +4,7 @@ import constants from "../config/constants";
 
 class WebSocketService {
   private wss: WebSocket.Server | null = null;
-  private userSocket: WebSocket | null = null;
+  private clients: Set<WebSocket> = new Set();
   private deepgramService: any | null = null;
 
   constructor() {
@@ -19,7 +19,7 @@ class WebSocketService {
 
   reset() {
     this.wss = null;
-    this.userSocket = null;
+    this.clients.clear();
     this.deepgramService = null;
   }
 
@@ -31,14 +31,17 @@ class WebSocketService {
   setupWebSocketEvents() {
     this.wss!.on("connection", (ws) => {
       console.log("New WebSocket connection established");
-      this.userSocket = ws;
+      this.clients.add(ws);
 
       ws.on("message", (data) => this.handleMessage(data));
       ws.on("close", () => {
         console.log("WebSocket connection closed");
-        this.userSocket = null;
+        this.clients.delete(ws);
       });
-      ws.on("error", (error) => console.error("WebSocket error:", error));
+      ws.on("error", (error) => {
+        console.error("WebSocket error:", error);
+        this.clients.delete(ws);
+      });
     });
 
     this.wss!.on("listening", () => {
@@ -63,18 +66,25 @@ class WebSocketService {
     } else {
       console.log("Received non-binary message:", data.toString());
     }
-
-    // Send dummy transcript for testing
-    //this.sendTranscript("This is a placeholder transcript.");
   }
 
   sendTranscript(transcript: any) {
-    if (this.userSocket) {
-      this.userSocket.send(transcript);
-    } else {
-      console.error("No active WebSocket connection to send transcript");
+    if (!transcript || typeof transcript !== "string" || !transcript.trim()) {
+      return;
     }
+
+    if (this.clients.size === 0) {
+      console.error("No active WebSocket connection to send transcript");
+      return;
+    }
+
+    this.clients.forEach((client) => {
+      if (client.readyState === WebSocket.OPEN) {
+        client.send(transcript);
+      }
+    });
   }
 }
 
 export default new WebSocketService();
+

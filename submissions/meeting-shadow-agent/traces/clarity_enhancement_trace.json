@@ -1,0 +1,25 @@
+{
+  "trace_id": "tr_clarity_enhancement_84712",
+  "timestamp": "2026-08-07T19:48:30.000Z",
+  "component": "ClarityService.enhanceTranscriptChunk",
+  "llm_model": "llama-3.3-70b-versatile",
+  "provider": "Groq API",
+  "entries": [
+    {
+      "chunk_id": "chunk_01",
+      "speaker": "Speaker 1",
+      "raw_text": "um like we need to finish the Eureka task by 30th you know",
+      "enhanced_text": "We need to finish the Eureka task by the 30th.",
+      "fillers_removed": ["um", "like", "you know"],
+      "latency_ms": 488
+    },
+    {
+      "chunk_id": "chunk_02",
+      "speaker": "Speaker 2",
+      "raw_text": "uh so Ashwin and Jonathan are allocating 50 rupees budget for DBMS worksheets",
+      "enhanced_text": "Ashwin and Jonathan are allocating a 50 rupees budget for DBMS worksheets.",
+      "fillers_removed": ["uh", "so"],
+      "latency_ms": 374
+    }
+  ]
+}

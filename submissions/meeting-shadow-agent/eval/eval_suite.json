@@ -1,0 +1,55 @@
+{
+  "suite_name": "Meeting Shadow Agent Live Clarity Evaluation",
+  "version": "1.0.0",
+  "test_cases": [
+    {
+      "id": "tc_01",
+      "category": "live_enhancement",
+      "description": "Removal of noisy filler words and grammar correction",
+      "input": "um like we need to finish the Eureka task by 30th you know",
+      "speaker": "Speaker 1",
+      "expected_cleaned": "We need to finish the Eureka task by the 30th.",
+      "check_filler_removed": true
+    },
+    {
+      "id": "tc_02",
+      "category": "live_enhancement",
+      "description": "Preservation of numbers, names, and technical terms",
+      "input": "uh so Ashwin and Jonathan are allocating 50 rupees budget for DBMS DBMS worksheets",
+      "speaker": "Speaker 2",
+      "expected_cleaned": "Ashwin and Jonathan are allocating a 50 rupees budget for DBMS worksheets.",
+      "check_terms_preserved": ["Ashwin", "Jonathan", "50 rupees", "DBMS"]
+    },
+    {
+      "id": "tc_03",
+      "category": "qna_retrieval",
+      "description": "General knowledge question direct LLM answer",
+      "input": "Who is the Prime Minister of India?",
+      "speaker": "Speaker 1",
+      "expected_answer_contains": "Narendra Modi"
+    },
+    {
+      "id": "tc_04",
+      "category": "qna_retrieval",
+      "description": "Connected docs priority search (Eureka task deadline)",
+      "input": "What is the deadline for Eureka task?",
+      "speaker": "Speaker 2",
+      "expected_answer_contains": "30th"
+    },
+    {
+      "id": "tc_05",
+      "category": "zero_hallucination",
+      "description": "Unanswerable specific question should NOT hallucinate password and must state not available",
+      "input": "What is the exact secret password for the server database cluster?",
+      "speaker": "Speaker 1",
+      "expected_answer_contains": "not available"
+    },
+    {
+      "id": "tc_06",
+      "category": "speaker_diarization",
+      "description": "Multi-speaker attribution between participant and user",
+      "input": "Speaker 1: Are you attending the conference tomorrow? Speaker 2: Yes I will be presenting at 10 AM.",
+      "expected_speakers": ["Speaker 1", "Speaker 2"]
+    }
+  ]
+}
